@@ -10,6 +10,8 @@ exports.handler = async function(event, context) {
     };
   }
 
+  const EMAIL_USER="greonxpert@gmail.com"
+const EMAIL_PASS="afedcqpmtotaghet"
   try {
     const { email, otp } = JSON.parse(event.body);
 
@@ -26,13 +28,13 @@ exports.handler = async function(event, context) {
       port: 587,
       secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: EMAIL_USER,
+        pass: EMAIL_PASS,
       },
     });
 
     await transporter.sendMail({
-      from: `"Carbeez App" <${process.env.EMAIL_USER}>`,
+      from: `"Carbeez App" <${EMAIL_USER}>`,
       to: email,
       subject: 'Your Carbeez Login OTP',
       html: `<p>Your OTP is: <strong>${otp}</strong></p>`,
